@@ -10,7 +10,7 @@ export default function SearchBar({value, onChange}: Props) {
     const colors = useThemeColors()
     return <Row style={[styles.wrapper, {backgroundColor: colors.grayWhite}]} gap={8}>
         <Image source={require("@/assets/images/search.png")} style={{ width: 16, height: 16 }}/>
-        <TextInput style={styles.input} onChangeText={onChange} value={value}/>
+        <TextInput style={styles.input} onChangeText={onChange} value={value} placeholder="Search..."/>
     </Row>
 }
 
