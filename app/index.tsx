@@ -1,5 +1,6 @@
 import Card from "@/components/Card";
 import PokemonCard from "@/components/pokemon/PokemonCard";
+import { RootView } from "@/components/rootView";
 import Row from "@/components/Row";
 import SearchBar from "@/components/searchBar";
 import { SortButton } from "@/components/sortButton";
@@ -9,7 +10,6 @@ import { useThemeColors } from "@/hooks/useThemeColors";
 import { getPokemonId } from "@/utils/pokemon";
 import { useState } from "react";
 import { ActivityIndicator, FlatList, Image, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 
 export default function Index() {
@@ -25,7 +25,7 @@ export default function Index() {
   ].sort((a, b) => (a[sortKey] < b[sortKey] ? -1 : 1))
 
   return (
-    <SafeAreaView edges={["top"]} style={[styles.container, { backgroundColor: colors.tint }]}>
+    <RootView >
       <Row style={styles.header} gap={16}>
         <Image source={require("@/assets/images/pokeball.png")} width={24} height={24}/>
         <ThemedText variant="headline" color="grayLight">Pokedex</ThemedText>
@@ -46,20 +46,16 @@ export default function Index() {
           }
           renderItem= {
             ({item}) => <PokemonCard id={item.id} name={item.name} style={{flex: 1/3}}/>
-          } 
+          }
           keyExtractor={
             (item)=> item.id.toString()
           }/>
       </Card>
-    </SafeAreaView>
+    </RootView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 4
-  },
   header : {
     paddingHorizontal: 12,
     paddingVertical: 8

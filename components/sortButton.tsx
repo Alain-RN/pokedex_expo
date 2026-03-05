@@ -28,7 +28,7 @@ export function SortButton({ value, onChange }: Props) {
         buttonRef.current?.measureInWindow((x, y, width, height) => {
             setPosition({
                 top: y + height + 12,
-                right: Dimensions.get("window").width - x - width
+                right:  Dimensions.get("window").width - x - width
             })
             setIsModalVisible(true)
         })
